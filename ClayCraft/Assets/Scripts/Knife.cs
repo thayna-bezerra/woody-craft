@@ -34,6 +34,13 @@ public class Knife : MonoBehaviour
                 Vector3 movementVector = new Vector3(touchDeltaPosition.x, touchDeltaPosition.y, 0f) * movementSpeed * Time.deltaTime;
                 transform.position += movementVector;
                 lastTouchPosition = touch.position;
+
+                float newXPosition = Mathf.Clamp(transform.position.x, -2.60f, 2.60f);
+                transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
+
+                float newYPosition = Mathf.Clamp(transform.position.y, -3.00f, 1.61f);
+                transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);
+
             }
             else if (touch.phase == TouchPhase.Ended)
             {
