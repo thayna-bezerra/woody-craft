@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class Wood : MonoBehaviour
 {
@@ -22,5 +23,14 @@ public class Wood : MonoBehaviour
         //Skinned mesh renderer key's value is clamped between 0 & 100
         float newWeight = skinnedMeshRenderer.GetBlendShapeWeight(keyIndex) + damage * (100f / colliderHeight);
         skinnedMeshRenderer.SetBlendShapeWeight(keyIndex, newWeight);
+    }
+
+    public void ReloadScene()
+    {
+        // Obtém o nome da cena atual
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        // Recarrega a cena atual
+        SceneManager.LoadScene(currentSceneName);
     }
 }
