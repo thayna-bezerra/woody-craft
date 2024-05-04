@@ -10,29 +10,36 @@ public class Knife : MonoBehaviour
 
     private ParticleSystem.EmissionModule woodFxEmission;
 
-    private Rigidbody knifeRb;
-    private Vector3 movementVector;
-    private bool isMoving = false;
+    private Vector2 lastTouchPosition;
+    private bool isDragging = false;
 
     private void Start()
     {
-        knifeRb = GetComponent<Rigidbody>();
-
         woodFxEmission = woodFx.emission;
     }
 
     private void Update()
     {
-        isMoving = Input.GetMouseButton(0);
-
-        if (isMoving)
-            movementVector = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0f) * movementSpeed * Time.deltaTime;
-    }
-
-    private void FixedUpdate()
-    {
-        if (isMoving)
-            knifeRb.position += movementVector;
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                lastTouchPosition = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Moved)
+            {
+                isDragging = true;
+                Vector2 touchDeltaPosition = touch.position - lastTouchPosition; // Usando Vector2 para a posição do toque
+                Vector3 movementVector = new Vector3(touchDeltaPosition.x, touchDeltaPosition.y, 0f) * movementSpeed * Time.deltaTime;
+                transform.position += movementVector;
+                lastTouchPosition = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                isDragging = false;
+            }
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -42,15 +49,17 @@ public class Knife : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        Coll coll = collision.collider.GetComponent<Coll>();
-        if (coll != null)
+        if (isDragging)
         {
-            // hit Collider:
-            woodFxEmission.enabled = true;
-            woodFx.transform.position = collision.contacts[0].point;
+            Coll coll = collision.collider.GetComponent<Coll>();
+            if (coll != null)
+            {
+                woodFxEmission.enabled = true;
+                woodFx.transform.position = collision.contacts[0].point;
 
-            coll.HitCollider(hitDamage);
-            wood.Hit(coll.index, hitDamage);
+                coll.HitCollider(hitDamage);
+                wood.Hit(coll.index, hitDamage);
+            }
         }
     }
 }
