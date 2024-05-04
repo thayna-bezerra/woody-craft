@@ -12,3 +12,4 @@ public class ApplyColor : MonoBehaviour
         material.color = fcp.color;
     }
 }
+  
