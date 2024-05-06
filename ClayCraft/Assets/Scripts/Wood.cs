@@ -25,12 +25,4 @@ public class Wood : MonoBehaviour
         skinnedMeshRenderer.SetBlendShapeWeight(keyIndex, newWeight);
     }
 
-    public void ReloadScene()
-    {
-        // Obtém o nome da cena atual
-        string currentSceneName = SceneManager.GetActiveScene().name;
-
-        // Recarrega a cena atual
-        SceneManager.LoadScene(currentSceneName);
-    }
 }
