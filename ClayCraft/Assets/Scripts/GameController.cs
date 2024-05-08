@@ -7,8 +7,10 @@ public class GameController : MonoBehaviour
 {
     public GameObject panelHome;
     public GameObject panelCustomColor;
+    public GameObject panelGame;
     public GameObject woodHomeAnimation;
     public GameObject woodModel;
+    public GameObject knife;
 
     public void ReloadScene()
     {
@@ -30,8 +32,19 @@ public class GameController : MonoBehaviour
     {
         panelHome.SetActive(true);
         panelCustomColor.SetActive(false);
+        panelGame.SetActive(false);
+
         woodHomeAnimation.SetActive(true);
         woodModel.SetActive(false);
+        knife.SetActive(false);
+
+        //SoundController.sounds.click.Play();
+    }
+    public void StartGame()
+    {
+        panelCustomColor.SetActive(false);
+        knife.SetActive(true);
+        panelGame.SetActive(true);
 
         //SoundController.sounds.click.Play();
     }
