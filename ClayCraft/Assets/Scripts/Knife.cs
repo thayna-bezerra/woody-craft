@@ -13,9 +13,12 @@ public class Knife : MonoBehaviour
     private Vector2 lastTouchPosition;
     private bool isDragging = false;
 
+    public Vector3 initialPosition;
+
     private void Start()
     {
         woodFxEmission = woodFx.emission;
+        transform.position = initialPosition;
     }
 
     private void Update()
