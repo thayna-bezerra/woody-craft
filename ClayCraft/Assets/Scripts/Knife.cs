@@ -10,10 +10,12 @@ public class Knife : MonoBehaviour
 
     private ParticleSystem.EmissionModule woodFxEmission;
 
-    private Vector2 lastTouchPosition;
+    private Vector3 offset;
+    private float zCoordinate;
     private bool isDragging = false;
 
     public Vector3 initialPosition;
+
 
     private void Start()
     {
@@ -26,30 +28,46 @@ public class Knife : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-            {
-                lastTouchPosition = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Moved)
-            {
-                isDragging = true;
-                Vector2 touchDeltaPosition = touch.position - lastTouchPosition; // Usando Vector2 para a posição do toque
-                Vector3 movementVector = new Vector3(touchDeltaPosition.x, touchDeltaPosition.y, 0f) * movementSpeed * Time.deltaTime;
-                transform.position += movementVector;
-                lastTouchPosition = touch.position;
 
-                float newXPosition = Mathf.Clamp(transform.position.x, -2.60f, 2.60f);
-                transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
+            Ray ray = Camera.main.ScreenPointToRay(touch.position);
+            RaycastHit hit;
 
-                float newYPosition = Mathf.Clamp(transform.position.y, -3.00f, 1.45f);
-                transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);
-
-            }
-            else if (touch.phase == TouchPhase.Ended)
+            switch (touch.phase)
             {
-                isDragging = false;
+                case TouchPhase.Began:
+                    if (Physics.Raycast(ray, out hit) && hit.transform == transform)
+                    {
+                        isDragging = true;
+                        zCoordinate = Camera.main.WorldToScreenPoint(transform.position).z;
+                        offset = transform.position - GetWorldPosition(touch.position);
+                    }
+                    break;
+
+                case TouchPhase.Moved:
+                    if (isDragging)
+                    {
+                        // Update the position of the object
+                        transform.position = GetWorldPosition(touch.position) + offset;
+
+                        float newXPosition = Mathf.Clamp(transform.position.x, -2.60f, 2.60f);
+                        transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
+
+                        float newYPosition = Mathf.Clamp(transform.position.y, -3.00f, 1.45f);
+                        transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                    isDragging = false;
+                    break;
             }
         }
+    }
+
+    private Vector3 GetWorldPosition(Vector3 screenPosition)
+    {
+        screenPosition.z = zCoordinate;
+        return Camera.main.ScreenToWorldPoint(screenPosition);
     }
 
     private void OnCollisionExit(Collision collision)
