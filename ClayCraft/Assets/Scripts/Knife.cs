@@ -41,7 +41,7 @@ public class Knife : MonoBehaviour
                 float newXPosition = Mathf.Clamp(transform.position.x, -2.60f, 2.60f);
                 transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
 
-                float newYPosition = Mathf.Clamp(transform.position.y, -3.00f, 1.61f);
+                float newYPosition = Mathf.Clamp(transform.position.y, -3.00f, 1.45f);
                 transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);
 
             }
