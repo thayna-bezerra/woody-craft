@@ -9,13 +9,17 @@ public class ApplyColor : MonoBehaviour
     public ParticleSystem particle;
     public Material material;
 
-
     private void Update()
     {
         material.color = fcp.color;
-                                   
-        Color colorMax = fcp.color;
 
+        // Atualiza a cor no PlayerPrefs
+        PlayerPrefs.SetFloat("SelectedColorR", fcp.color.r);
+        PlayerPrefs.SetFloat("SelectedColorG", fcp.color.g);
+        PlayerPrefs.SetFloat("SelectedColorB", fcp.color.b);
+        PlayerPrefs.SetFloat("SelectedColorA", fcp.color.a);
+
+        Color colorMax = fcp.color;
         Color colorMin = new Color(colorMax.r, colorMax.g, colorMax.b, 0f);
 
         ParticleSystem.MinMaxGradient gradient = new ParticleSystem.MinMaxGradient(colorMin, colorMax);
@@ -24,4 +28,3 @@ public class ApplyColor : MonoBehaviour
         mainModule.startColor = gradient;
     }
 }
-  

@@ -5784,7 +5784,7 @@ GameObject:
   - component: {fileID: 780473276}
   - component: {fileID: 780473275}
   m_Layer: 0
-  m_Name: ColorPicker
+  m_Name: ColorManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14723,7 +14723,6 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 997178903}
   - {fileID: 893430871}
-  - {fileID: 780473276}
   - {fileID: 1278081658}
   - {fileID: 213545338}
   - {fileID: 1751370981}
@@ -14731,3 +14730,4 @@ SceneRoots:
   - {fileID: 1359396803}
   - {fileID: 1570539021}
   - {fileID: 1067646996}
+  - {fileID: 780473276}

@@ -2152,7 +2152,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 780473276}
-  - component: {fileID: 780473275}
   m_Layer: 0
   m_Name: ColorPicker
   m_TagString: Untagged
@@ -2160,21 +2159,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &780473275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780473274}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b53f3596806c1714b856a5c2a7262c30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fcp: {fileID: 0}
-  particle: {fileID: 1537608700}
-  material: {fileID: 2100000, guid: 6ad9e9622e2a62e428bbae5b751967ef, type: 2}
 --- !u!4 &780473276
 Transform:
   m_ObjectHideFlags: 0
@@ -4350,6 +4334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1570539021}
   - component: {fileID: 1570539022}
+  - component: {fileID: 1570539023}
   m_Layer: 0
   m_Name: Wood Holder
   m_TagString: Untagged
@@ -4391,6 +4376,20 @@ MonoBehaviour:
   woodTransform: {fileID: 112353016}
   rotationVector: {x: 360, y: 0, z: 0}
   rotationDuration: 0.4
+--- !u!114 &1570539023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570539020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff360260143df7648afd2576c4b31034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 1537608700}
+  material: {fileID: 2100000, guid: 6ad9e9622e2a62e428bbae5b751967ef, type: 2}
 --- !u!4 &1571135971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4425891714653858, guid: c33d23e7dff87c94bbbf8303e2318397, type: 3}
@@ -5263,9 +5262,9 @@ SceneRoots:
   - {fileID: 1570539021}
   - {fileID: 997178903}
   - {fileID: 893430871}
-  - {fileID: 780473276}
   - {fileID: 917258223}
   - {fileID: 1278081658}
   - {fileID: 213545338}
   - {fileID: 1751370981}
   - {fileID: 1067646996}
+  - {fileID: 780473276}
