@@ -82,6 +82,8 @@ public class Knife : MonoBehaviour
             Coll coll = collision.collider.GetComponent<Coll>();
             if (coll != null)
             {
+                //SoundController.sounds.click.Play();
+
                 woodFxEmission.enabled = true;
                 woodFx.transform.position = collision.contacts[0].point;
 
