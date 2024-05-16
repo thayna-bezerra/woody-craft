@@ -13,7 +13,6 @@ public class ApplyColor : MonoBehaviour
     {
         material.color = fcp.color;
 
-        // Atualiza a cor no PlayerPrefs
         PlayerPrefs.SetFloat("SelectedColorR", fcp.color.r);
         PlayerPrefs.SetFloat("SelectedColorG", fcp.color.g);
         PlayerPrefs.SetFloat("SelectedColorB", fcp.color.b);
