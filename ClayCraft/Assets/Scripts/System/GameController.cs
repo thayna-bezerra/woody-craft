@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public AudioClip buttonClickSound;
-    public AudioClip woodpeckerKnocking;
 
     public void ChangeScene(string name)
     {

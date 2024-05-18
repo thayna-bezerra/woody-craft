@@ -21,7 +21,7 @@ public class MenuController : MonoBehaviour
 
     void Start()
     {
-        //isSoundOn = AudioManager.isSoundOn;
+        isSoundOn = AudioManager.isSoundOn;
         UpdateButtonImage();
 
         soundButton.onClick.AddListener(ToggleSound);

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Knife : MonoBehaviour
 {
@@ -16,15 +17,15 @@ public class Knife : MonoBehaviour
 
     public Vector3 initialPosition;
 
-    public AudioClip soundEffect;
-    //private SoundEffects soundEffectsManager;
-
+    public AudioClip woodpeckerKnocking;
+    public float soundInterval = 0.001f;
+    private bool isPlayingSound = false;
+    private bool isColliding = false;
 
     private void Start()
     {
         woodFxEmission = woodFx.emission;
         transform.position = initialPosition;
-        //soundEffectsManager = FindObjectOfType<SoundEffects>();
     }
 
     private void Update()
@@ -77,6 +78,7 @@ public class Knife : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         woodFxEmission.enabled = false;
+        isColliding = false;
     }
 
     private void OnCollisionStay(Collision collision)
@@ -92,9 +94,32 @@ public class Knife : MonoBehaviour
                 coll.HitCollider(hitDamage);
                 wood.Hit(coll.index, hitDamage);
 
-                //soundEffectsManager.PlaySoundEffect(soundEffect);
-                //SoundController.sounds.wood.Play();
+                if (!isPlayingSound)
+                {
+                    isColliding = true;
+                    StartCoroutine(PlaySoundWithInterval());
+                }
             }
+        }
+    }
+
+    private IEnumerator PlaySoundWithInterval()
+    {
+        isPlayingSound = true;
+        while (isColliding)
+        {
+            PlaySoundEffect(woodpeckerKnocking);
+            yield return new WaitForSeconds(soundInterval);
+        }
+        isPlayingSound = false;
+    }
+
+    public void PlaySoundEffect(AudioClip sound)
+    {
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        if (audioManager != null)
+        {
+            audioManager.PlaySoundEffect(sound);
         }
     }
 }
