@@ -54,6 +54,7 @@ public class MenuController : MonoBehaviour
         woodpeckerAnimation.SetActive(true);
         woodModel.SetActive(false);
     }
+
     void UpdateButtonImage()
     {
         if (isSoundOn)
