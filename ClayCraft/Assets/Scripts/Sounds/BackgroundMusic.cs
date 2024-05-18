@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BackgroundMusic : MonoBehaviour
 {
-    public AudioClip backgroundMusic;
-    private AudioSource audioSource;
+    //public AudioClip backgroundMusic;
+    public AudioSource audioSource;
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class BackgroundMusic : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = backgroundMusic;
+        //audioSource.clip = backgroundMusic;
         audioSource.loop = true;
         audioSource.playOnAwake = false;
     }

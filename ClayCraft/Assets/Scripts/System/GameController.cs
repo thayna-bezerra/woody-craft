@@ -33,13 +33,14 @@ public class GameController : MonoBehaviour
 
     public void GoToHome()
     {
-        panelHome.SetActive(true);
         panelCustomColor.SetActive(false);
+        panelHome.SetActive(true);
 
         woodyAnimation.SetActive(true);
         woodpeckerAnimation.SetActive(true);
 
         woodModel.SetActive(false);
+        Debug.Log("olaaa");
     }
 
     public void StartGame(string name)
