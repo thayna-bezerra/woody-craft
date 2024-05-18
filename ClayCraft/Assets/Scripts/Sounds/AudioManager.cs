@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 
     public static bool isSoundOn = true;
 
-    private static AudioManager instance;
+    private static AudioManager instance; 
 
     void Awake()
     {
@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour
         backgroundMusic.mute = !isOn;
         soundEffects.mute = !isOn;
     }
+
     public void PlaySoundEffect(AudioClip clip)
     {
         if (isSoundOn && clip != null)

@@ -17,14 +17,14 @@ public class Knife : MonoBehaviour
     public Vector3 initialPosition;
 
     public AudioClip soundEffect;
-    private SoundEffects soundEffectsManager;
+    //private SoundEffects soundEffectsManager;
 
 
     private void Start()
     {
         woodFxEmission = woodFx.emission;
         transform.position = initialPosition;
-        soundEffectsManager = FindObjectOfType<SoundEffects>();
+        //soundEffectsManager = FindObjectOfType<SoundEffects>();
     }
 
     private void Update()
@@ -92,7 +92,7 @@ public class Knife : MonoBehaviour
                 coll.HitCollider(hitDamage);
                 wood.Hit(coll.index, hitDamage);
 
-                soundEffectsManager.PlaySoundEffect(soundEffect);
+                //soundEffectsManager.PlaySoundEffect(soundEffect);
                 //SoundController.sounds.wood.Play();
             }
         }

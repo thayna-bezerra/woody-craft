@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,16 +12,16 @@ public class MenuController : MonoBehaviour
     public GameObject woodpeckerAnimation;
     public GameObject woodModel;
 
+    public AudioClip buttonClickSound;
+    public static bool isSoundOn = true;
+
     public Button soundButton;
     public Sprite soundOn;
     public Sprite soundOff;
 
-    public AudioClip buttonClickSound;
-    private bool isSoundOn;
-
     void Start()
     {
-        isSoundOn = AudioManager.isSoundOn;
+        //isSoundOn = AudioManager.isSoundOn;
         UpdateButtonImage();
 
         soundButton.onClick.AddListener(ToggleSound);
@@ -53,16 +54,17 @@ public class MenuController : MonoBehaviour
         woodpeckerAnimation.SetActive(true);
         woodModel.SetActive(false);
     }
-
-    public void PlaySoundEffect(AudioClip sound)
+    void UpdateButtonImage()
     {
-        AudioManager audioManager = FindObjectOfType<AudioManager>();
-        if (audioManager != null)
+        if (isSoundOn)
         {
-            audioManager.PlaySoundEffect(sound);
+            soundButton.image.sprite = soundOn;
+        }
+        else
+        {
+            soundButton.image.sprite = soundOff;
         }
     }
-
     void ToggleSound()
     {
         isSoundOn = !isSoundOn;
@@ -76,15 +78,12 @@ public class MenuController : MonoBehaviour
         UpdateButtonImage();
     }
 
-    void UpdateButtonImage()
+    public void PlaySoundEffect(AudioClip sound)
     {
-        if (isSoundOn)
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        if (audioManager != null)
         {
-            soundButton.image.sprite = soundOn;
-        }
-        else
-        {
-            soundButton.image.sprite = soundOff;
+            audioManager.PlaySoundEffect(sound);
         }
     }
 }
