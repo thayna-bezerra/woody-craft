@@ -2995,8 +2995,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1067646995}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+      - m_Target: {fileID: 1067646997}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: GoToCustomColor
         m_Mode: 1
         m_Arguments:
@@ -4761,19 +4761,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 633402589}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &633402589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8194,33 +8182,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1067646996}
-  - component: {fileID: 1067646995}
   - component: {fileID: 1067646997}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: MenuController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1067646995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067646994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3768d248a45b2684c96b2207b24fd547, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panelHome: {fileID: 764284512}
-  panelCustomColor: {fileID: 1513474268}
-  woodyAnimation: {fileID: 1359396801}
-  woodpeckerAnimation: {fileID: 1471051161}
-  woodModel: {fileID: 1570539020}
-  buttonClickSound: {fileID: 8300000, guid: fbc0a6e2a68209249bc6cb2600113ff8, type: 3}
 --- !u!4 &1067646996
 Transform:
   m_ObjectHideFlags: 0
@@ -8248,9 +8217,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3340ad49497d0eb489c881e599b86f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelHome: {fileID: 764284512}
+  panelCustomColor: {fileID: 1513474268}
+  woodyAnimation: {fileID: 1359396801}
+  woodpeckerAnimation: {fileID: 1471051161}
+  woodModel: {fileID: 1570539020}
   soundButton: {fileID: 633402588}
-  soundOnSprite: {fileID: 21300000, guid: a3bb2c216aae85740b8ab1cf490eb27a, type: 3}
-  soundOffSprite: {fileID: 21300000, guid: 17f278e8b7ab4404ca6b1ec071725e59, type: 3}
+  soundOn: {fileID: 21300000, guid: a3bb2c216aae85740b8ab1cf490eb27a, type: 3}
+  soundOff: {fileID: 21300000, guid: 17f278e8b7ab4404ca6b1ec071725e59, type: 3}
+  buttonClickSound: {fileID: 8300000, guid: fbc0a6e2a68209249bc6cb2600113ff8, type: 3}
 --- !u!1 &1070123267
 GameObject:
   m_ObjectHideFlags: 0
@@ -12057,8 +12032,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1067646995}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+      - m_Target: {fileID: 1067646997}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: GoHome
         m_Mode: 1
         m_Arguments:
@@ -14144,9 +14119,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1067646995}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 1067646997}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
