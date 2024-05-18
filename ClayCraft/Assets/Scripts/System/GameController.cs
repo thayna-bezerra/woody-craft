@@ -10,14 +10,20 @@ public class GameController : MonoBehaviour
     public GameObject woodpeckerAnimation;
     public GameObject woodModel;
 
+    public AudioClip buttonClickSound;
+
     public void ReloadScene()
     {
+        PlaySoundEffect(buttonClickSound);
+
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
 
     public void GoToCustomColor()
     {
+        PlaySoundEffect(buttonClickSound);
+
         panelHome.SetActive(false);
         panelCustomColor.SetActive(true);
         woodyAnimation.SetActive(false);
@@ -25,27 +31,36 @@ public class GameController : MonoBehaviour
         woodModel.SetActive(true);
     }
 
-    public void BackInitialScreen(string name)
+    public void GoHome()
     {
-        SceneManager.LoadScene(name);
-    }
+        PlaySoundEffect(buttonClickSound);
 
-
-    public void GoToHome()
-    {
         panelCustomColor.SetActive(false);
         panelHome.SetActive(true);
-
         woodyAnimation.SetActive(true);
         woodpeckerAnimation.SetActive(true);
-
         woodModel.SetActive(false);
-        Debug.Log("olaaa");
+    }
+
+    public void BackInitialScreen(string name)
+    {
+        PlaySoundEffect(buttonClickSound);
+        SceneManager.LoadScene(name);
     }
 
     public void StartGame(string name)
     {
+        PlaySoundEffect(buttonClickSound);
         SceneManager.LoadScene(name);
+    }
+
+    public void PlaySoundEffect(AudioClip sound)
+    {
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        if (audioManager != null)
+        {
+            audioManager.PlaySoundEffect(sound);
+        }
     }
 
 }

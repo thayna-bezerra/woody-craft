@@ -3,7 +3,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioSource backgroundMusic;
-    //public AudioSource soundEffects;
+    public AudioSource soundEffects;
 
     public static bool isSoundOn = true;
 
@@ -11,7 +11,6 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        // Assegura que o AudioManager persiste entre as cenas
         if (instance == null)
         {
             instance = this;
@@ -22,15 +21,21 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Configura o estado inicial do som
         backgroundMusic.mute = !isSoundOn;
-        //soundEffects.mute = !isSoundOn;
+        soundEffects.mute = !isSoundOn;
     }
 
     public void ToggleSound(bool isOn)
     {
         isSoundOn = isOn;
         backgroundMusic.mute = !isOn;
-        //soundEffects.mute = !isOn;
+        soundEffects.mute = !isOn;
+    }
+    public void PlaySoundEffect(AudioClip clip)
+    {
+        if (isSoundOn && clip != null)
+        {
+            soundEffects.PlayOneShot(clip);
+        }
     }
 }
